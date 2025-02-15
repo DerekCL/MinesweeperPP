@@ -1,0 +1,21 @@
+# Ignore Godot-specific cache and temporary files
+.import/
+.export/
+*.godot
+*.mono
+*.pck
+*.log
+*.cfg
+
+# Ignore compiled C# files
+*.dll
+*.exe
+*.mdb
+*.pdb
+*.suo
+*.csproj.user
+*.vs/
+
+# Ignore build artifacts
+bin/
+obj/

@@ -1,8 +1,36 @@
 <Project Sdk="Godot.NET.Sdk/4.3.0">
   <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
-    <TargetFramework Condition=" '$(GodotTargetPlatform)' == 'android' ">net7.0</TargetFramework>
-    <TargetFramework Condition=" '$(GodotTargetPlatform)' == 'ios' ">net8.0</TargetFramework>
+    <TargetFramework>net9.0</TargetFramework>
+    <TargetFramework Condition=" '$(GodotTargetPlatform)' == 'android' ">net9.0</TargetFramework>
+    <TargetFramework Condition=" '$(GodotTargetPlatform)' == 'ios' ">net9.0</TargetFramework>
     <EnableDynamicLoading>true</EnableDynamicLoading>
+    <LangVersion>preview</LangVersion>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+
+
+    <!-- Code Analysis & Style Enforcement -->
+    <EnableNETAnalyzers>true</EnableNETAnalyzers>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <AnalysisLevel>latest-recommended</AnalysisLevel>
+    <CodeAnalysisTreatWarningsAsErrors>true</CodeAnalysisTreatWarningsAsErrors>
+    <Deterministic>true</Deterministic>
+    <EnableUnusedReferences>true</EnableUnusedReferences>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+
+
   </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Meziantou.Analyzer" Version="2.0.187" />
+    <PackageReference Include="Microsoft.CodeAnalysis.Analyzers" Version="3.11.0" />
+    <PackageReference Include="NUnit" Version="4.3.2" />
+    <PackageReference Include="Roslynator.Analyzers" Version="4.13.0" />
+    <PackageReference Include="Roslynator.CodeAnalysis.Analyzers" Version="4.13.0" />
+    <PackageReference Include="Roslynator.CodeFixes" Version="4.13.0" />
+    <PackageReference Include="Roslynator.Formatting.Analyzers" Version="4.13.0" />
+    <PackageReference Include="Roslynator.Refactorings" Version="4.13.0" />
+    <PackageReference Include="SecurityCodeScan.VS2019" Version="5.6.7" />
+    <PackageReference Include="SonarAnalyzer.CSharp" Version="10.6.0.109712" />
+    <PackageReference Include="StyleCop.Analyzers" Version="1.1.118" />
+  </ItemGroup>
 </Project>

@@ -7,8 +7,219 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-## [0.1.0] - 2024-03-21
-
 ### Added
+- Core `Tile` class implementation with:
+  - Basic tile properties (IsMine, IsRevealed, IsFlagged, AdjacentMines)
+  - Tile state management (SetMine, Reveal, ToggleFlag)
+  - Test suite for Tile functionality
+  - Visual feedback for tile states (revealed, flagged, mine)
+  - Colored numbers for adjacent mine counts
+  - Mouse input handling for left/right clicks
+  - Comprehensive test suite covering:
+    - Core functionality (mine, reveal, flag)
+    - Visual state management
+    - Input handling
+    - Color schemes for numbers
+    - Resource cleanup
+- Core `GridManager` class implementation with:
+  - Grid initialization and validation
+  - Mine placement with Fisher-Yates shuffle
+  - Adjacent mine calculation
+  - Recursive tile revelation
+  - Comprehensive test suite for grid operations
+  - Visual tile instantiation and layout
+  - Dynamic grid sizing and background
+  - Mouse input signal propagation
+- Core `GameManager` class implementation with:
+  - Game state management (Ready, Playing, Won, Lost)
+  - First-click safety guarantee
+  - Flag management and validation
+  - Win/lose condition detection
+  - Mine revelation on game over
+  - Comprehensive test coverage for game rules
+  - Active timer with pause/resume functionality
+  - Accurate game time tracking
+  - Game state protection during pause
+- Core `UIManager` test suite with:
+  - Comprehensive UI element testing
+  - Game state interaction verification
+  - Timer and flag count display validation
+  - Button state and interaction testing
+  - Proper resource cleanup
+- Added `Empty` static property to `GridPosition` struct to represent invalid positions
+- Settings system with persistence
+  - Game settings (default difficulty, custom dimensions)
+  - Visual settings (theme selection)
+  - Audio settings (sound/music volume controls)
+- Settings UI with live preview
+- Settings persistence between sessions
+- Enhanced settings change detection and feedback:
+  - Visual feedback when settings are modified
+  - Apply button enabled only when changes are pending
+  - Immediate validation of setting values
 
-- Initial Commit
+### Changed
+- Improved code quality and maintainability:
+  - Split core game types into separate files for better organization and maintainability
+  - Fixed code style issues (blank lines after braces)
+  - Ensured file names match their primary type names
+  - Simplified `GetNumberColor` method using static dictionary
+  - Reduced method complexity in Tile class
+  - Extracted common test assertions into helper methods
+  - Improved test readability and maintainability
+  - Reduced code duplication in TileTests
+  - Extracted grid configuration into immutable struct
+  - Reduced method complexity and nesting
+  - Improved test assertions using Assert.Multiple
+  - Added proper resource disposal in tests
+  - Extracted reusable grid operations into separate methods
+  - Created `GridPosition` value type to encapsulate grid coordinates
+  - Eliminated code duplication in grid traversal operations
+  - Simplified complex conditionals with helper methods
+  - Improved LINQ usage for better readability
+  - Added `TileState` to encapsulate tile behavior
+  - Broke down large test methods into focused test cases
+  - Improved test readability with helper methods
+  - Added descriptive assertion messages
+  - Moved hardcoded scene paths to `ScenePaths` class
+  - Fixed input handling in `Tile` class
+  - Made utility methods static where appropriate
+  - Simplified complex methods
+  - Fixed code style issues in `GameManager.cs`:
+    - Added proper XML documentation for properties
+    - Fixed field naming conventions
+    - Added missing braces for single-line statements
+    - Added 'this' prefix for local calls
+    - Fixed member ordering
+    - Added trailing commas in multi-line initializers
+    - Fixed modifier order
+- Improved `MenuManager.cs` code quality:
+  - Moved scene paths to a dedicated `ScenePaths` class
+  - Made paths more maintainable and reusable
+  - Fixed property modifiers order (required before public)
+  - Added proper XML documentation for properties
+  - Added 'this' prefix for local calls
+  - Added trailing commas in multi-line initializers
+- Enhanced `GameManagerTests.cs` code quality:
+  - Fixed naming conventions (using `_gameManager` consistently)
+  - Made `AssertAllMinesAreRevealed` static and more maintainable
+  - Removed unused test utility methods
+  - Reduced code duplication in test methods
+  - Added comprehensive XML documentation for test utility methods
+  - Reduced code duplication in grid traversal operations
+  - Simplified test utility methods using LINQ and functional approaches
+  - Improved readability with clear method summaries and parameters
+  - Removed unused test utility methods
+  - Refactored `FindTile` method to use LINQ for better readability
+  - Simplified complex conditional in `FindTile` with clearer null check
+  - Optimized LINQ query in `FindTile` by combining operations
+- Improved game scene layout:
+  - Centered game grid in window
+  - Proper UI anchoring and containers
+  - Consistent layout across window sizes
+- Improved signal handling in `GameManager`:
+  - Converted complex signal parameters to basic Godot-supported types
+  - Updated signal definitions for better type safety
+  - Fixed signal emission in tests
+  - Improved signal documentation
+- Improved signal handling in tests:
+  - Fixed signal name references in UIManagerTests
+  - Removed unused test variables
+  - Used correct signal name constants
+  - Improved test readability
+- Improved code quality in `GameManager.cs`:
+  - Added XML documentation for all public members
+  - Converted `_gridManager` field to `GridManager` property
+  - Renamed event delegates to follow C# naming conventions
+  - Enhanced error handling and initialization validation
+- Improved code quality in `MenuManager.cs` and `UIManager.cs`:
+  - Added XML documentation for all public members
+  - Converted fields to required properties
+  - Improved naming conventions
+  - Enhanced error handling and initialization validation
+  - Added proper XML documentation for scene paths
+  - Added method documentation explaining instance method requirements
+- Improved code quality and maintainability:
+  - Added XML documentation for all public types and members in `GameTypes.cs`
+  - Added proper StructLayoutAttribute for value types
+  - Fixed code style issues (braces, this prefix, spacing)
+  - Renamed file to match first type name
+  - Moved game enums (`GameState`, `RevealResult`) to Core namespace
+  - Extracted common grid traversal logic into helper methods
+- Improved code quality and maintainability:
+  - Fixed position comparison in `GameManager.MoveMineFromFirstClick` to use proper `GridPosition` equality
+- Improved code organization and quality:
+  - Extracted `ScenePaths` into dedicated file in Core namespace
+  - Renamed scene path constants to avoid naming conflicts
+  - Fixed static member ordering in `MenuManager`
+  - Fixed unused parameter in `StartGame` method
+- Improved code quality in `UIManager.cs`:
+  - Fixed property modifier ordering (required before public)
+  - Updated property documentation to follow StyleCop standards
+  - Added 'this' prefix for local method calls
+  - Improved code consistency and maintainability
+- Improved code quality in `GameManager.cs`:
+  - Reduced code duplication in grid traversal methods
+  - Extracted common grid iteration logic into reusable helper method
+  - Improved maintainability and readability
+- Improved code quality in `GridManager.cs`:
+  - Split into separate files (`TileState.cs`, `GridPosition.cs`, `GridManager.cs`, `ListExtensions.cs`)
+  - Added proper XML documentation for all public members
+  - Fixed field naming conventions (removed underscore prefix)
+  - Added 'this' prefix for local calls
+  - Added proper spacing between elements
+  - Added StructLayout attributes for structs
+  - Improved code organization and maintainability
+- Improved code quality in `Tile.cs`:
+  - Added XML documentation for all public members
+  - Fixed field naming conventions (removed underscore prefix)
+  - Added 'required' modifier for non-nullable fields
+  - Optimized NumberColors dictionary type
+  - Fixed code style issues (spacing, trailing commas)
+  - Improved member ordering (static members first)
+  - Added 'this' prefix for local calls
+- Removed duplicate GameState enum from Scripts folder, consolidated to Core.GameState
+- Improved code quality in `GameManagerTests.cs`:
+  - Added XML documentation for all test methods
+  - Fixed Assert.That parameter alignment
+  - Added proper XML documentation for Setup, Cleanup, and Dispose methods
+  - Fixed member ordering (public before private)
+  - Added proper 'this' prefix to all local method calls
+  - Fixed test method naming to follow C# conventions
+  - Improved null handling and safety checks
+- Further improved code quality in `GameManagerTests.cs`:
+  - Added trailing commas in multi-line initializers
+  - Fixed closing brace spacing
+  - Fixed struct equality comparison to use proper field comparison
+  - Changed return types to void where values are unused
+  - Added XML documentation for async method return values
+  - Fixed member ordering (public before private)
+  - Removed unused parameters
+  - Reduced code duplication in test methods
+  - Added proper XML documentation for async test methods
+  - Added missing blank lines after closing braces
+  - Fixed member ordering (public before private)
+  - Extracted common null checks into helper method
+  - Added proper null checks for SceneTree and Root
+  - Kept method overloads adjacent
+  - Improved error messages for initialization checks
+- Improved code quality in `SettingsManager.cs`:
+  - Fixed floating-point comparisons using epsilon-based range checks
+  - Added culture-invariant string formatting
+  - Simplified complex control initialization using LINQ
+  - Updated to use generic Enum.GetValues<T>()
+  - Fixed implicitly-typed array by specifying tuple type
+
+### Fixed
+- Fixed linter warnings in `MenuManager.cs` and `GameManagerTests.cs`
+  - Removed hardcoded paths
+  - Fixed variable naming consistency
+  - Improved static method handling
+- Fixed IDisposable implementation in `GameManagerTests.cs`
+- Fixed metadata handling in game configuration
+  - Properly store configuration using Godot Variants
+  - Safely handle metadata retrieval and conversion
+  - Ensure beginner configuration works correctly
+
+### Patch
+- Fixed SA1000 linter error in Scripts/Tile.cs by adding a space after the 'new' keyword (Semantic Versioning: patch update).

@@ -18,26 +18,7 @@ reviews:
       - "DO NOT MERGE"
       - "DRAFT"
     drafts: false
-    max_file_changes: 10  # Flag large PRs for manual review
-    min_approval_required: 1 # Require at least 1 approval for merges
 
 chat:
   auto_reply: true
 
-knowledge_base:
-  jira:
-    project_keys: []  # Add your Jira project keys if integrating
-  linear:
-    team_keys: []     # Add your Linear team keys if integrating
-
-tools:
-  ast_grep:
-    essential_rules: true
-    rule_dirs: []
-    packages: []
-
-# Add any path-specific review instructions if needed
-path_instructions:
-  - path: "**/*.cs"
-    instructions: |
-      Ensure the C# code adheres to the project's coding standards and best practices.

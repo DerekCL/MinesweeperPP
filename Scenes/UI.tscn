@@ -1,0 +1,66 @@
+[gd_scene load_steps=2 format=3 uid="uid://b6x8puyo4g6j8"]
+
+[ext_resource type="Script" path="res://Scripts/UIManager.cs" id="1_m2u4p"]
+
+[node name="UI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_m2u4p")
+
+[node name="TopPanel" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 50.0
+grow_horizontal = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="TopPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TopPanel/MarginContainer"]
+layout_mode = 2
+
+[node name="FlagCountLabel" type="Label" parent="TopPanel/MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+text = "010"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VSeparator" type="VSeparator" parent="TopPanel/MarginContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="NewGameButton" type="Button" parent="TopPanel/MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "New Game"
+
+[node name="VSeparator2" type="VSeparator" parent="TopPanel/MarginContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="PauseButton" type="Button" parent="TopPanel/MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Pause"
+
+[node name="VSeparator3" type="VSeparator" parent="TopPanel/MarginContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="TimerLabel" type="Label" parent="TopPanel/MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+text = "000"
+horizontal_alignment = 1
+vertical_alignment = 1 
